@@ -132,7 +132,7 @@ allprojects {
 
 ```kotlin
 dependencies {
-    implementation("com.github.kevinmf1:ImageSqueeze:1.1.0")
+    implementation("com.github.kevinmf1:ImageSqueeze:v1.1.0")
 }
 ```
 
@@ -143,7 +143,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.github.kevinmf1:ImageSqueeze:1.1.0'
+    implementation 'com.github.kevinmf1:ImageSqueeze:v1.1.0'
 }
 ```
 
