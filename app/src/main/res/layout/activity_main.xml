@@ -1,19 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:id="@+id/main">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical"
+        android:padding="16dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnPick"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gallery"
+                android:layout_marginEnd="8dp"/>
+
+            <Button
+                android:id="@+id/btnCamera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Camera" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:baselineAligned="false">
+
+            <!-- Original -->
+            <LinearLayout
+                android:id="@+id/lytOriginal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginEnd="8dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Original"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/ivOriginalMini"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:scaleType="centerCrop"
+                    android:background="#DDDDDD"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:id="@+id/tvOriginalSize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Size: -"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+
+            <!-- Compressed -->
+            <LinearLayout
+                android:id="@+id/lytCompressed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginStart="8dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Compressed"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/ivCompressedMini"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:scaleType="centerCrop"
+                    android:background="#DDDDDD"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:id="@+id/tvCompressedSize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Size: -\nSaved: 0%"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <!-- Zelory Compressed -->
+            <LinearLayout
+                android:id="@+id/lytZelory"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginStart="8dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Zelory"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/ivZeloryMini"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:scaleType="centerCrop"
+                    android:background="#DDDDDD"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:id="@+id/tvZelorySize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Size: -\nSaved: 0%"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvPreviewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Large Preview (Click image above to preview)"
+            android:layout_marginTop="24dp"
+            android:layout_gravity="center"
+            android:textStyle="italic" />
+
+        <ImageView
+            android:id="@+id/ivLargePreview"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:scaleType="fitCenter"
+            android:background="#EEEEEE"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+</ScrollView>
