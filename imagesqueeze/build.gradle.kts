@@ -1,6 +1,9 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.library)
     id("maven-publish")
+    id("signing")
 }
 
 android {
@@ -63,9 +66,65 @@ publishing {
             afterEvaluate {
                 from(components["release"])
             }
-            groupId = "com.github.kevinmf1"
-            artifactId = "ImageSqueeze"
+            groupId = "io.github.kevinmf1"
+            artifactId = "imagesqueeze"
             version = "1.0.0"
+
+            pom {
+                name.set("ImageSqueeze")
+                description.set("A robust, crash-safe Android image compression library built with Kotlin Coroutines.")
+                url.set("https://github.com/kevinmf1/ImageSqueeze")
+                
+                licenses {
+                    license {
+                        name.set("The Apache License, Version 2.0")
+                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                    }
+                }
+                
+                developers {
+                    developer {
+                        id.set("kevinmf1")
+                        name.set("Kevin Malik Fajar")
+                        email.set("kevinmalikf@gmail.com")
+                    }
+                }
+                
+                scm {
+                    connection.set("scm:git:github.com/kevinmf1/ImageSqueeze.git")
+                    developerConnection.set("scm:git:ssh://github.com/kevinmf1/ImageSqueeze.git")
+                    url.set("https://github.com/kevinmf1/ImageSqueeze/tree/master")
+                }
+            }
         }
     }
+    
+    repositories {
+        maven {
+            name = "LocalStaging"
+            url = uri(layout.buildDirectory.dir("staging-deploy"))
+        }
+    }
+}
+
+val localProps = Properties()
+val localPropsFile = project.rootProject.file("local.properties")
+if (localPropsFile.exists()) {
+    localPropsFile.inputStream().use { stream ->
+        localProps.load(stream)
+    }
+}
+
+signing {
+    val keyId = localProps.getProperty("signing.keyId")?.takeLast(8)
+    val password = localProps.getProperty("signing.password")
+    val secretKeyRingFile = localProps.getProperty("signing.secretKeyRingFile")
+
+    if (keyId != null && password != null && secretKeyRingFile != null) {
+        project.ext.set("signing.keyId", keyId)
+        project.ext.set("signing.password", password)
+        project.ext.set("signing.secretKeyRingFile", secretKeyRingFile)
+    }
+    
+    sign(publishing.publications)
 }
