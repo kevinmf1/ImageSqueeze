@@ -2,6 +2,7 @@
 
 A **robust, crash-safe** Android image compression library built in Kotlin — designed as a modern, more resilient alternative to [Zelory Compressor](https://github.com/zetbaitsu/Compressor).
 
+![Android CI](https://github.com/kevinmf1/ImageSqueeze/actions/workflows/android_ci.yml/badge.svg)
 [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
@@ -431,7 +432,7 @@ Run with:
 ## 📄 License
 
 ```
-Copyright 2025 vinz
+Copyright 2025 Kevin Malik Fajar
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
