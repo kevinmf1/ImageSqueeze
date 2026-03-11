@@ -7,6 +7,16 @@ A **robust, crash-safe** Android image compression library built in Kotlin — d
 
 ---
 
+### 📷 Visual Comparison
+*(Left to Right: Original vs ImageSqueeze vs Zelory)*
+
+<p align="center">
+  <img src=".github/assets/ss-1.png" width="45%" />
+  <img src=".github/assets/ss-2.png" width="45%" />
+</p>
+
+---
+
 ## ✨ Why ImageSqueeze?
 
 | Feature | Zelory | ImageSqueeze |
@@ -204,6 +214,38 @@ val destination = File(getExternalFilesDir(null), "compressed_photo.jpg")
 
 val result = ImageSqueeze.compress(context, sourceFile, destination) {
     quality(75)
+}
+```
+
+### 🖼️ Jetpack Compose Support
+
+**Yes**, ImageSqueeze is fully compatible with Jetpack Compose natively because it is written cleanly in Kotlin Coroutines without any view-layer dependencies. Since Jetpack UI recompositions must remain non-blocking, you can easily use it alongside `rememberCoroutineScope`:
+
+```kotlin
+@Composable
+fun CompressImageScreen(originalFile: File) {
+    val context = LocalContext.current
+    val coroutineScope = rememberCoroutineScope()
+    var compressedResult by remember { mutableStateOf<SqueezeResult?>(null) }
+
+    Button(onClick = {
+        coroutineScope.launch {
+            // Compress off the main thread smoothly
+            compressedResult = originalFile.squeeze(context) {
+                resolution(1024, 1024)
+                quality(80)
+            }
+        }
+    }) {
+        Text("Compress Now")
+    }
+
+    // Handle states
+    when (val res = compressedResult) {
+        is SqueezeResult.Success -> Text("Saved ${res.file.length()} bytes!")
+        is SqueezeResult.Error -> Text("Error: ${res.message}")
+        null -> Text("Waiting to compress...")
+    }
 }
 ```
 
