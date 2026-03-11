@@ -24,4 +24,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Image Squeeze"
 include(":app")
- 
+include(":imagesqueeze")
