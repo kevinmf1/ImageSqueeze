@@ -68,7 +68,7 @@ publishing {
             }
             groupId = "io.github.kevinmf1"
             artifactId = "imagesqueeze"
-            version = "1.0.0"
+            version = "1.1.0"
 
             pom {
                 name.set("ImageSqueeze")

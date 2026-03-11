@@ -63,7 +63,7 @@ ImageSqueeze is officially published on Maven Central. You do not need to add an
 
 ```kotlin
 dependencies {
-    implementation("io.github.kevinmf1:imagesqueeze:1.0.0")
+    implementation("io.github.kevinmf1:imagesqueeze:1.1.0")
 }
 ```
 
@@ -74,7 +74,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'io.github.kevinmf1:imagesqueeze:1.0.0'
+    implementation 'io.github.kevinmf1:imagesqueeze:1.1.0'
 }
 ```
 
@@ -132,7 +132,7 @@ allprojects {
 
 ```kotlin
 dependencies {
-    implementation("com.github.kevinmf1:ImageSqueeze:1.0.0")
+    implementation("com.github.kevinmf1:ImageSqueeze:1.1.0")
 }
 ```
 
@@ -143,13 +143,13 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.github.kevinmf1:ImageSqueeze:1.0.0'
+    implementation 'com.github.kevinmf1:ImageSqueeze:1.1.0'
 }
 ```
 
 </details>
 
-> Replace `1.0.0` with the latest release tag.
+> Replace `1.1.0` with the latest release tag.
 
 ### Local Module
 
