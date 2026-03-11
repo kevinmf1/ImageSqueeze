@@ -54,7 +54,37 @@ Instead of crashing, every error is returned as a **typed `SqueezeResult.Error`*
 
 ## 📦 Installation
 
-### JitPack (Recommended)
+### Maven Central (Recommended)
+
+ImageSqueeze is officially published on Maven Central. You do not need to add any custom repositories. Simply add the dependency to your app module:
+
+<details open>
+<summary><strong>Kotlin DSL</strong> (build.gradle.kts)</summary>
+
+```kotlin
+dependencies {
+    implementation("io.github.kevinmf1:imagesqueeze:1.0.0")
+}
+```
+
+</details>
+
+<details>
+<summary><strong>Groovy</strong> (build.gradle)</summary>
+
+```groovy
+dependencies {
+    implementation 'io.github.kevinmf1:imagesqueeze:1.0.0'
+}
+```
+
+</details>
+
+---
+
+### JitPack
+
+Alternatively, you can get it via JitPack.
 
 **Step 1.** Add the JitPack repository:
 
@@ -102,7 +132,7 @@ allprojects {
 
 ```kotlin
 dependencies {
-    implementation("com.github.vinz:ImageSqueeze:1.0.0")
+    implementation("com.github.kevinmf1:ImageSqueeze:1.0.0")
 }
 ```
 
@@ -113,7 +143,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.github.vinz:ImageSqueeze:1.0.0'
+    implementation 'com.github.kevinmf1:ImageSqueeze:1.0.0'
 }
 ```
 
