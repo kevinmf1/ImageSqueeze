@@ -10,7 +10,7 @@ class CompressionConfig {
     var targetHeight: Int = 816
     var maxSizeInBytes: Long = 1_000_000L // Default 1 MB threshold
     var minQuality: Int = 10
-    var defaultQuality: Int = 80 // Zelory default
+    var defaultQuality: Int = 80 // Default
     var compressFormat: Bitmap.CompressFormat = Bitmap.CompressFormat.JPEG
     var isForDisplay: Boolean = false // If true, constraints ignore targetWidth/Height and set to thumbnail size (100x100)
 
