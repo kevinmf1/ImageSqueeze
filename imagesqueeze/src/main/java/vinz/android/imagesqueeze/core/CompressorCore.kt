@@ -1,6 +1,7 @@
 package vinz.android.imagesqueeze.core
 
 import android.content.Context
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import timber.log.Timber
@@ -23,8 +24,9 @@ internal object CompressorCore {
         context: Context,
         sourceFile: File,
         destinationFile: File,
-        config: CompressionConfig
-    ): SqueezeResult = withContext(Dispatchers.IO) {
+        config: CompressionConfig,
+        dispatcher: CoroutineDispatcher = Dispatchers.IO
+    ): SqueezeResult = withContext(dispatcher) {
         compressSync(context, sourceFile, destinationFile, config)
     }
 

@@ -1,6 +1,8 @@
 package vinz.android.imagesqueeze
 
 import android.content.Context
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import vinz.android.imagesqueeze.core.CompressorCore
 import java.io.File
 
@@ -16,6 +18,7 @@ object ImageSqueeze {
      * @param context the application context.
      * @param source the original image file.
      * @param destination the destination file where compressed image will be saved (defaults to cache directory).
+     * @param dispatcher the CoroutineDispatcher to run the compression on (defaults to Dispatchers.IO).
      * @param configBlock DSL block to customize compression parameters (size, format, quality, dimensions).
      * @return SqueezeResult containing either the Success (with output File) or Error (with details).
      */
@@ -23,10 +26,11 @@ object ImageSqueeze {
         context: Context,
         source: File,
         destination: File = File(context.cacheDir, "compressed_${source.name}"),
+        dispatcher: CoroutineDispatcher = Dispatchers.IO,
         configBlock: CompressionConfig.() -> Unit = {}
     ): SqueezeResult {
         val config = CompressionConfig().apply(configBlock)
-        return CompressorCore.compress(context, source, destination, config)
+        return CompressorCore.compress(context, source, destination, config, dispatcher)
     }
 
     /**

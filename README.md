@@ -236,14 +236,21 @@ val result = sourceFile.squeeze(context) {
 }
 ```
 
-### Custom Destination
+### Custom Destination & Background Thread
 
-By default, the compressed file is saved to the app's cache directory. You can specify a custom destination:
+By default, the compressed file is saved to the app's cache directory and runs on `Dispatchers.IO`. You can easily override the destination file and the Coroutines Dispatcher:
 
 ```kotlin
+import kotlinx.coroutines.Dispatchers
+
 val destination = File(getExternalFilesDir(null), "compressed_photo.jpg")
 
-val result = ImageSqueeze.compress(context, sourceFile, destination) {
+val result = ImageSqueeze.compress(
+    context = context, 
+    source = sourceFile, 
+    destination = destination,
+    dispatcher = Dispatchers.Default // Run on CPU-bound thread instead of IO
+) {
     quality(75)
 }
 ```
