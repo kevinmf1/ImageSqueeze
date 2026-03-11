@@ -124,7 +124,6 @@ signing {
         project.ext.set("signing.keyId", keyId)
         project.ext.set("signing.password", password)
         project.ext.set("signing.secretKeyRingFile", secretKeyRingFile)
+        sign(publishing.publications)
     }
-    
-    sign(publishing.publications)
 }
